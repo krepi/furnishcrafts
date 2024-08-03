@@ -1,0 +1,37 @@
+version: '3'  # Specifies the version of Docker Compose file format
+
+services:
+#  frontend:
+#    build:
+#      context: ./frontend  # Builds the frontend service from the specified directory
+#    ports:
+#      - "3000:3000"  # Maps port 3000 of the container to port 3000 on the host
+#    depends_on:
+#      - backend  # Ensures the backend service starts before the frontend service
+
+  backend:
+    build:
+      context: ./backend  # Builds the backend service from the specified directory
+    ports:
+      - "3001:3000"  # Maps port 3000 of the container to port 3001 on the host
+    volumes:
+      - ./backend:/app  # Mounts the backend source code into the container at /app
+      - /app/node_modules  # Prevents overwriting the node_modules directory in the container
+    depends_on:
+      - database  # Ensures the database service starts before the backend service
+    env_file:
+      - ./backend/.env  # Specifies the .env file for environment variables for the backend service
+    command: ["npm", "run", "devStart"]  # Uses nodemon to start the backend and watch for code changes
+
+  database:
+    image: postgres:13  # Uses the official PostgreSQL image, version 13
+    ports:
+      - "5433:5432"  # Maps port 5432 of the container (default PostgreSQL port) to port 5433 on the host
+    environment:
+      POSTGRES_USER: ${DB_MAIN_USER}  # Sets the PostgreSQL user, sourced from the .env file
+      POSTGRES_PASSWORD: ${DB_MAIN_PASSWORD}  # Sets the PostgreSQL user password, sourced from the .env file
+      POSTGRES_DB: ${DB_MAIN_NAME}  # Sets the default database name, sourced from the .env file
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql  # Initializes the database with the schema.sql script
+    env_file:
+      - ./.env  # Specifies the .env file for environment variables for the database service
