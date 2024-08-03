@@ -1,11 +1,11 @@
 import { exec } from 'child_process';
 import path from 'path';
-import dotenv from 'dotenv';
 import pg from 'pg';
-
-dotenv.config();
+import { fileURLToPath } from 'url';
+import '../config/config.js'; // Importuj konfigurację
 
 const { Client } = pg;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * Function to load mocked data into the PostgreSQL database.
@@ -46,5 +46,3 @@ const loadMockedData = async () => {
 };
 
 loadMockedData();
-
-
