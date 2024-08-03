@@ -883,7 +883,7 @@ To set up and run the application, follow these steps:
    cd furnishcrafts
     ```
 2. **Environment Configuration:**
- JWT Secret
+ 
 To generate a JWT secret token, use the `crypto.js` file located in the `backend/src/helpers` folder. This will allow you to create a secure token for authentication purposes.
 ```bash
 node backend/src/helpers/crypto.js
