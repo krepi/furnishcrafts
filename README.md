@@ -40,9 +40,9 @@ To test the application with admin privileges, use the following login credentia
 - **Password:** `adminpass`
 
 ### JWT Secret
-To generate a JWT secret token, use the `crypto.js` file located in the `src/helpers` folder. This will allow you to create a secure token for authentication purposes.
+To generate a JWT secret token, use the `crypto.js` file located in the `backend/src/helpers` folder. This will allow you to create a secure token for authentication purposes.
 ```bash
-node src/helpers/crypto.js
+node backend/src/helpers/crypto.js
 
 ```
 ## Project Description
@@ -883,7 +883,12 @@ To set up and run the application, follow these steps:
    cd furnishcrafts
     ```
 2. **Environment Configuration:**
+ JWT Secret
+To generate a JWT secret token, use the `crypto.js` file located in the `backend/src/helpers` folder. This will allow you to create a secure token for authentication purposes.
+```bash
+node backend/src/helpers/crypto.js
 
+```
 Create a .env file in the root directory and in the backend directory, based on the .env.example files provided.
 ```bash
 # .env (root directory)
@@ -906,7 +911,7 @@ Use Docker Compose to build and start the application. This command will start t
 ```bash
 docker-compose up -d
 ```
-4.**Access the Application:**
+4. **Access the Application:**
 
 
 The backend API will be accessible at http://localhost:3001.
