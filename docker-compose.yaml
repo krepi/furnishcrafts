@@ -25,6 +25,7 @@ services:
 
   database:
     image: postgres:13  # Uses the official PostgreSQL image, version 13
+    container_name: furnishcrafts_database 
     ports:
       - "5433:5432"  # Maps port 5432 of the container (default PostgreSQL port) to port 5433 on the host
     environment:
@@ -33,5 +34,6 @@ services:
       POSTGRES_DB: ${DB_MAIN_NAME}  # Sets the default database name, sourced from the .env file
     volumes:
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql  # Initializes the database with the schema.sql script
+  
     env_file:
       - ./.env  # Specifies the .env file for environment variables for the database service
