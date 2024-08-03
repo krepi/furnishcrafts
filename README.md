@@ -922,6 +922,45 @@ Ensure that Docker and Docker Compose are installed on your system.
 The frontend and backend services are containerized for easy deployment and management.
 Modify the environment variables as needed to suit your development environment.
 
+### Loading Mocked Data into PostgreSQL Database
+
+If you want to load data from the `mockedData.sql` file into your PostgreSQL database without modifying the `docker-compose.yml` file, follow the steps below:
+
+1. **Start the containers:**
+
+    ```bash
+    docker-compose up -d
+    ```
+
+2. **Check the name of the database container:**
+
+    ```bash
+    docker ps
+    ```
+
+    Ensure that the database container is running and note its name (e.g., `furnishcrafts_database`).
+
+3. **Copy the `mockedData.sql` file to the database container:**
+
+    ```bash
+    docker cp path/to/mockedData.sql furnishcrafts_database:/mockedData.sql
+    ```
+
+4. **Access the database container:**
+
+    ```bash
+    docker exec -it furnishcrafts_database bash
+    ```
+
+5. **Load the data into the database:**
+
+    Inside the container, run `psql` and load the data from the file:
+
+    ```bash
+    psql -U furnish -d furnishcrafts -f /mockedData.sql
+    ```
+
+By following these steps, you can easily load the mocked data into your PostgreSQL database.
 
 
 ## Future Enhancements
