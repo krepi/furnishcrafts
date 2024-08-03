@@ -37,7 +37,7 @@
 ### Admin Credentials
 To test the application with admin privileges, use the following login credentials:
 - **Email:** `admin@example.com`
-- **Password:** `admin123`
+- **Password:** `adminpass`
 
 ### JWT Secret
 To generate a JWT secret token, use the `crypto.js` file located in the `src/helpers` folder. This will allow you to create a secure token for authentication purposes.
@@ -892,6 +892,7 @@ DB_MAIN_PASSWORD=your_db_password
 DB_MAIN_NAME=furnishcrafts
 
 # .env (backend directory)
+DB_CONTAINER_NAME=furnishcrafts_database
 DB_HOST=database
 DB_PORT=5432
 DB_NAME=furnishcrafts
@@ -901,32 +902,22 @@ JWT_SECRET=your_jwt_secret
 ```
 3. **Start the Application Using Docker:**
 
-Use Docker Compose to build and start the application. This command will start the frontend, backend, and database services defined in the docker-compose.yml file.
+Use Docker Compose to build and start the application. This command will start the  backend, and database services defined in the docker-compose.yml file.
 ```bash
 docker-compose up -d
 ```
-4. **Load Mock Data**
+4.**Access the Application:**
 
-To load the mock data into the database, execute the following command:
-```bash
-node backend/data/loadMockedData.js
 
-```
-5.**Access the Application:**
-
-The frontend application will be accessible at http://localhost:3000.
 The backend API will be accessible at http://localhost:3001.
 
-**Notes**
-Ensure that Docker and Docker Compose are installed on your system.
-The frontend and backend services are containerized for easy deployment and management.
-Modify the environment variables as needed to suit your development environment.
+
 
 ### Loading Mocked Data into PostgreSQL Database
 
 If you want to load data from the `mockedData.sql` file into your PostgreSQL database without modifying the `docker-compose.yml` file, follow the steps below:
 
-1. **Start the containers:**
+1. **Start the containers: (if not started!!)**
 
     ```bash
     docker-compose up -d
@@ -943,7 +934,7 @@ If you want to load data from the `mockedData.sql` file into your PostgreSQL dat
 3. **Copy the `mockedData.sql` file to the database container:**
 
     ```bash
-    docker cp path/to/mockedData.sql furnishcrafts_database:/mockedData.sql
+    docker cp database/mockedData.sql furnishcrafts_database:/mockedData.sql
     ```
 
 4. **Access the database container:**
@@ -960,8 +951,25 @@ If you want to load data from the `mockedData.sql` file into your PostgreSQL dat
     psql -U furnish -d furnishcrafts -f /mockedData.sql
     ```
 
-By following these steps, you can easily load the mocked data into your PostgreSQL database.
+By following these steps, you can easily load the mocked data into your PostgreSQL database. You can login to database as an admin and as an user.
 
+#### Admin Credentials
+
+To test the application with admin privileges, use the following login credentials:
+- **Email:** `admin@example.com`
+- **Password:** `adminpass`
+
+#### User Credentials
+
+To test the application with user privileges, use the following login credentials:
+- **Email:** `user@example.com`
+- **Password:** `userpass`
+
+
+**Notes**
+Ensure that Docker and Docker Compose are installed on your system.
+The frontend and backend services are containerized for easy deployment and management.
+Modify the environment variables as needed to suit your development environment.
 
 ## Future Enhancements
 
