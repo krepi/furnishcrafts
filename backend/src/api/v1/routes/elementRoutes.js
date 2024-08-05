@@ -1,5 +1,7 @@
 import express from 'express';
 import ElementController from '../controllers/elementController.js';
+import validateQueryParams from "../middleware/paramsValidatorMiddleware.js";
+import { ALLOWED_ELEMENTS_PARAMS } from "../constants/paramsConstants.js";
 
 const router = express.Router();
 const elementController = new ElementController();
@@ -16,6 +18,6 @@ router.get('/:id', elementController.getElementById);
  * @desc Get all elements
  * @access Public
  */
-router.get('/', elementController.getAllElements);
+router.get('/', validateQueryParams(ALLOWED_ELEMENTS_PARAMS), elementController.getAllElements);
 
 export default router;

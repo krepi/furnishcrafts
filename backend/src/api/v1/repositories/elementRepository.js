@@ -2,13 +2,30 @@ import { query } from '../../../config/configDB.js';
 
 class ElementRepository {
     /**
-     * Get all elements
-     * @returns {Promise<Array>}
+     * Get all elements with optional filters
+     * @param {Object} filters - Filters to apply
+     * @param {number} [filters.categoryId] - Category ID to filter by
+     * @param {number} [filters.colorId] - Color ID to filter by
+     * @returns {Promise<Array>} - List of elements
      */
-    async getAllElements() {
-        const data = await query('SELECT * FROM elements');
+    async getAllElements(filters) {
+        let baseQuery = 'SELECT * FROM elements WHERE 1=1';
+        const queryParams = [];
+
+        if (filters.categoryId) {
+            queryParams.push(filters.categoryId);
+            baseQuery += ` AND category = $${queryParams.length}`;
+        }
+
+        if (filters.colorId) {
+            queryParams.push(filters.colorId);
+            baseQuery += ` AND color = $${queryParams.length}`;
+        }
+
+        const data = await query(baseQuery, queryParams);
         return data.rows;
     }
+
 
     /**
      * Get element by ID

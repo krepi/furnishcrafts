@@ -2,11 +2,14 @@ import elementRepository from '../repositories/elementRepository.js';
 
 class ElementService {
     /**
-     * Get all elements
-     * @returns {Promise<Array>}
+     * Get all elements with optional filters
+     * @param {Object} filters - Filters to apply
+     * @param {number} [filters.categoryId] - Category ID to filter by
+     * @param {number} [filters.colorId] - Color ID to filter by
+     * @returns {Promise<Array>} - List of elements
      */
-    async getAllElements() {
-        return await elementRepository.getAllElements();
+    async getAllElements(filters) {
+        return await elementRepository.getAllElements(filters);
     }
 
     /**
