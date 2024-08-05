@@ -224,7 +224,7 @@ curl -X 'POST'   '/api/v1/elements'
 }
 ```
 
-#### GET /api/v1/elements
+#### GET /api/v1/elements (TODO)
 
 - Get a list of elements with optional filtering.
 
@@ -284,14 +284,14 @@ curl -X 'GET'   '/api/v1/elements/1'
 
 ### Projects Management
 
-#### POST /api/v1//projects
+#### POST /api/v1/projects
 
 - Create a new project for a user.
 
 **Request:**
 
 ```bash
-curl -X 'POST'   '/api/v1/users/1/projects'   
+curl -X 'POST'   '/api/v1/projects'   
 -H 'Content-Type: application/json'   
 -H 'Authorization: Bearer jwt_token_here'   
 -d '{
@@ -323,7 +323,7 @@ curl -X 'POST'   '/api/v1/users/1/projects'
 **Request:**
 
 ```bash
-curl -X 'GET'   '/api/v1/users/1/projects'   
+curl -X 'GET'   '/api/v1/projects'   
 -H 'Authorization: Bearer jwt_token_here'
 ```
 
@@ -350,7 +350,7 @@ curl -X 'GET'   '/api/v1/users/1/projects'
 **Request:**
 
 ```bash
-curl -X 'GET'   '/api/v1/users/1/projects/2'   
+curl -X 'GET'   '/api/v1/projects/2'   
 -H 'Authorization: Bearer jwt_token_here'
 ```
 
@@ -475,7 +475,7 @@ curl -X 'GET'   '/api/v1/users/1/projects/2/details'
 **Request:**
 
 ```bash
-curl -X 'PUT'   '/api/v1/projects/1/add-element'   
+curl -X 'POST'   '/api/v1/projects/1/elements'   
 -H 'Content-Type: application/json'   
 -H 'Authorization: Bearer jwt_token_here'   
 -d '{
@@ -506,11 +506,14 @@ curl -X 'PUT'   '/api/v1/projects/1/add-element'
 #### DELETE /api/v1/projects/:projectId/elements/:elementId
 
 - Remove element from project
+- When the quantity is greater than or equal to the quantity in the project, the element is removed entirely
 
 **Request:**
 
 ```bash
-curl -X 'DELETE' '/api/v1/projects/1/elements/1' -H 'Authorization: Bearer jwt_token_here' -d '{
+curl -X 'DELETE' '/api/v1/projects/1/elements/1' 
+  -H 'Authorization: Bearer jwt_token_here' 
+  -d '{
     "quantity": 5
 }'
 
