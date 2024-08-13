@@ -823,43 +823,76 @@ curl -X 'DELETE' '/api/v1/admin/elements/1' -H 'Authorization: Bearer jwt_token_
 ```
 backend/
 ├── src/
-│   ├── models/
-│   │   ├── userModel.js
-│   │   ├── elementModel.js
-│   │   ├── projectModel.js
-│   │   ├── categoryModel.js
-│   │   ├── colorModel.js
-│   ├── repositories/
-│   │   ├── userRepository.js
-│   │   ├── elementRepository.js
-│   │   ├── projectRepository.js
-│   │   ├── categoryRepository.js
-│   │   ├── colorRepository.js
-│   ├── services/
-│   │   ├── userService.js
-│   │   ├── elementService.js
-│   │   ├── projectService.js
-│   │   ├── categoryService.js
-│   │   ├── colorService.js
-│   │   ├── projectCalculationService.js
-│   ├── controllers/
-│   │   ├── userController.js
-│   │   ├── elementController.js
-│   │   ├── projectController.js
-│   │   ├── categoryController.js
-│   │   ├── colorController.js
-│   │   ├── adminController.js
-│   ├── routes/
-│   │   ├── userRoutes.js
-│   │   ├── elementRoutes.js
-│   │   ├── projectRoutes.js
-│   │   ├── categoryRoutes.js
-│   │   ├── adminRoutes.js
-│   ├── middleware/
-│   │   ├── authMiddleware.js
+│   ├── api/
+│   │   ├── v1/
+│   │   │   ├── controllers/
+│   │   │   │   ├── userController.js
+│   │   │   │   ├── elementController.js
+│   │   │   │   ├── projectController.js
+│   │   │   │   ├── categoryController.js
+│   │   │   │   ├── colorController.js
+│   │   │   │   ├── adminController.js
+│   │   │   ├── middleware/
+│   │   │   │   ├── authMiddleware.js
+│   │   │   │   ├── paramsValidatorMiddleware.js
+│   │   │   ├── repositories/
+│   │   │   │   ├── userRepository.js
+│   │   │   │   ├── elementRepository.js
+│   │   │   │   ├── projectRepository.js
+│   │   │   │   ├── categoryRepository.js
+│   │   │   │   ├── colorRepository.js
+│   │   │   ├── routes/
+│   │   │   │   ├── userRoutes.js
+│   │   │   │   ├── elementRoutes.js
+│   │   │   │   ├── projectRoutes.js
+│   │   │   │   ├── categoryRoutes.js
+│   │   │   │   ├── adminRoutes.js
+│   │   │   ├── services/
+│   │   │   │   ├── userService.js
+│   │   │   │   ├── elementService.js
+│   │   │   │   ├── projectService.js
+│   │   │   │   ├── categoryService.js
+│   │   │   │   ├── colorService.js
+│   │   │   │   ├── projectCalculationService.js
+│   │   │   ├── constants/
+│   │   │   │   ├── paramsConstants.js
+│   │   │   ├── app.js
 │   ├── config/
 │   │   └── database.js
-│   └── app.js
+│   ├── helpers/
+│   │   ├── customJWT/
+│   │   │   ├── jwtHelper.js
+│   ├── tests/ 
+│   │   ├── controllers/
+│   │   │   ├── userController.test.js
+│   │   │   ├── elementController.test.js
+│   │   │   ├── projectController.test.js
+│   │   │   ├── categoryController.test.js
+│   │   │   ├── colorController.test.js
+│   │   │   ├── adminController.test.js
+│   │   ├── middleware/
+│   │   │   ├── authMiddleware.test.js
+│   │   │   ├── paramsValidatorMiddleware.test.js
+│   │   ├── repositories/
+│   │   │   ├── userRepository.test.js
+│   │   │   ├── elementRepository.test.js
+│   │   │   ├── projectRepository.test.js
+│   │   │   ├── categoryRepository.test.js
+│   │   │   ├── colorRepository.test.js
+│   │   ├── routes/
+│   │   │   ├── userRoutes.test.js
+│   │   │   ├── elementRoutes.test.js
+│   │   │   ├── projectRoutes.test.js
+│   │   │   ├── categoryRoutes.test.js
+│   │   │   ├── adminRoutes.test.js
+│   │   ├── services/
+│   │   │   ├── userService.test.js
+│   │   │   ├── elementService.test.js
+│   │   │   ├── projectService.test.js
+│   │   │   ├── categoryService.test.js
+│   │   │   ├── colorService.test.js
+│   │   │   ├── projectCalculationService.test.js
+│   ├── server.js
 ├── .env
 ├── .gitignore
 ├── Dockerfile
@@ -871,7 +904,6 @@ database/
 .env
 README.md
 docker-compose.yml
-
 ```
 ## Setup and Installation
 
