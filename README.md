@@ -21,12 +21,13 @@
     - [Database](#database)
     - [DevOps](#devops)
     - [Security](#security-1)
-- [Database Documentation](#database-documentation)
-- [REST API Endpoints](#rest-api-endpoints)
-- [Testing and CI/CD](#testing-and-cicd)
+- [Database Documentation](#database-documentation) *(see separate documentation file in [Database Documentation](database/README.md))*
+- [REST API Endpoints](#rest-api-endpoints) *(see detailed documentation in  [API Documentation](./backend/src/api/v1/README.md )*
+- [Testing and CI/CD](#testing-and-cicd) *(see detailed documentation in [Testing Documentation](./backend/src/tests/README.md))*
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Future Enhancements](#future-enhancements)
+
 
 
 
