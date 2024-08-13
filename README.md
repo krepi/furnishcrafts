@@ -21,13 +21,13 @@
     - [Database](#database)
     - [DevOps](#devops)
     - [Security](#security-1)
+- [Database Documentation](#database-documentation)
 - [REST API Endpoints](#rest-api-endpoints)
-    - The detailed documentation for the REST API endpoints can be found in the [API Documentation](./backend/src/api/v1/README.md).
 - [Testing and CI/CD](#testing-and-cicd)
-    - The detailed documentation for testing and CI/CD can be found in the [Testing Documentation](./backend/src/tests/README.md).
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Future Enhancements](#future-enhancements)
+
 
 
 
@@ -126,6 +126,10 @@ efficiency, provide accurate cost estimates, and ensure timely delivery of custo
 ### Security
 
 - **JWT (JSON Web Tokens)**: For securely transmitting information between parties.
+
+## Database Documentation
+
+The database schema, initialization process, and detailed documentation about the database structure can be found in the [Database Documentation](database/README.md).
 
 
 ## REST API Endpoints

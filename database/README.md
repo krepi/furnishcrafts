@@ -1,3 +1,4 @@
+[Back to Main README](../README.md)
 # Furnishcraft Database Documentation
 
 ## Introduction
@@ -136,58 +137,13 @@ The `category_compatibility` table defines which categories of elements are comp
 
 ### Prerequisites
 
-- PostgreSQL installed and running on your local machine.
+- Docker and Docker Compose installed on your local machine.
 - Node.js and npm installed on your local machine.
 - Ensure that you have a `.env` file in the `backend` directory with the following variables:
 
-```plaintext
-# Port
-PORT=your_port
-
-# Secret key to generate JWT
-JWT_SECRET=your_jwt_secret
-
-# Data PostgreSQL
-DATABASE_URL=postgresql://your_username:your_password@your_host:your_port/your_database_name
-
-NODE_ENV=your_node_environment
-
-# Host
-DB_HOST=your_database_host
-
-# Port
-DB_PORT=your_database_port
-
-# Name
-DB_NAME=your_database_name
-
-# User
-DB_USER=your_database_user
-
-# Password
-DB_PASSWORD=your_database_password
-
-# To create new database
-DB_MAIN_NAME=your_main_database_name
-DB_MAIN_USER=your_main_database_user
-DB_MAIN_PASSWORD=your_main_database_password
-```
 ### Clone the repository
-```bash
-git clone https://github.com/krepi/node-course/tree/main/projects/furnishcrafts
 
-```
-### Install dependencies
 ```bash
-cd backend
-npm install
-
+git clone https://github.com/krepi/furnishcrafts
 ```
-### Create and initialize the database
-```bash
-node src/config/createDatabase.js
-```
-This script will:
-Connect to the PostgreSQL server using the credentials provided in the .env file.
-Create a new database (if it does not already exist).
-Execute the SQL script (schema.sql) to create the necessary tables and relationships.
+[Back to Main README](../README.md)
