@@ -1,3 +1,6 @@
+[Back to Main README](../../../../README.md)
+
+
 ## REST API Endpoints
 
 ### User Registration and Authentication
@@ -690,3 +693,4 @@ curl -X 'DELETE' '/api/v1/admin/elements/1' -H 'Authorization: Bearer jwt_token_
 
 
 ```
+[Back to Main README](../../../../README.md)
