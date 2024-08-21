@@ -65,3 +65,36 @@ export const elements = [
         installation_time: { hours: 1 },
     }
 ];
+export const detailedProjectElements = [
+    {
+        element_id: 1,
+        quantity: 4,
+        name: "Short Leg",
+        color: 1,
+        category: 1,
+        price: 10.00,
+        installation_cost: 2.00,
+        installation_time: { minutes: 30 }
+    },
+    {
+        element_id: 2,
+        quantity: 2,
+        name: "Long Leg",
+        color: 2,
+        category: 1,
+        price: 20.00,
+        installation_cost: 3.00,
+        installation_time: { minutes: 45 }
+    },
+    {
+        element_id: 3,
+        quantity: 1,
+        name: "Table Top",
+        color: 3,
+        category: 2,
+        price: 100.00,
+        installation_cost: 10.00,
+        installation_time: { hours: 1 }
+    }
+];
+
