@@ -7,11 +7,12 @@
   "scripts": {
     "start": "node src/server.js",
     "devStart": "nodemon src/server.js",
+
     "test": "jest",
     "UT-services": "jest --testPathPattern=src/tests/services/",
-    "UT-elements": "jest --testPathPattern=src/tests/services/elementService.test.js",
-    "UT-project": "jest --testPathPattern=src/tests/services/projectService.test.js",
-    "UT-project-calculation": "jest --testPathPattern=src/tests/services/projectCalculationService.test.js"
+    "UT-elements-service": "jest --testPathPattern=src/tests/services/elementService.test.js",
+    "UT-project-service": "jest --testPathPattern=src/tests/services/projectService.test.js",
+    "UT-project-calculation-service": "jest --testPathPattern=src/tests/services/projectCalculationService.test.js"
 
 
   },
