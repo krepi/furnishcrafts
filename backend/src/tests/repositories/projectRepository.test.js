@@ -1,7 +1,7 @@
 import projectRepository from '../../api/v1/repositories/projectRepository.js';
 import { query } from '../../config/configDB.js';
 
-
+// Mock the query function
 jest.mock('../../config/configDB.js');
 
 describe('ProjectRepository', () => {
@@ -9,6 +9,12 @@ describe('ProjectRepository', () => {
         jest.clearAllMocks();
     });
 
+    /**
+     * @description Test suite for getAllProjects method
+     * @given Mocked data returned from the database
+     * @when The getAllProjects method is called
+     * @then The correct query should be executed and the projects should be returned
+     */
     describe('getAllProjects', () => {
         it('should return all projects', async () => {
             // Given: Mocked data returned from the database
@@ -24,6 +30,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for getProjectsByUserId method
+     * @given Mocked data for a specific user
+     * @when The getProjectsByUserId method is called with a user ID
+     * @then The correct query should be executed and the user's projects should be returned
+     */
     describe('getProjectsByUserId', () => {
         it('should return projects for a specific user', async () => {
             // Given: Mocked data for a specific user
@@ -39,6 +51,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for getProjectById method
+     * @given Mocked data for a project and its elements
+     * @when The getProjectById method is called
+     * @then The correct queries should be executed and the project with elements should be returned
+     */
     describe('getProjectById', () => {
         it('should return a project by its ID with associated elements', async () => {
             // Given: Mocked data for a project and its elements
@@ -56,6 +74,12 @@ describe('ProjectRepository', () => {
             expect(result).toEqual({ ...mockProject, elements: mockElements });
         });
 
+        /**
+         * @description Test suite for getProjectById method when no project is found
+         * @given No project is found
+         * @when The getProjectById method is called
+         * @then The method should return undefined
+         */
         it('should return undefined if no project is found', async () => {
             // Given: No project is found
             query.mockResolvedValue({ rows: [] });
@@ -69,6 +93,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for getProjectElements method
+     * @given Mocked data for project elements
+     * @when The getProjectElements method is called
+     * @then The correct query should be executed and the elements should be returned
+     */
     describe('getProjectElements', () => {
         it('should return elements for a specific project', async () => {
             // Given: Mocked data for project elements
@@ -84,8 +114,12 @@ describe('ProjectRepository', () => {
         });
     });
 
-
-
+    /**
+     * @description Test suite for getDetailedProjectElements method
+     * @given Mocked detailed data for project elements
+     * @when The getDetailedProjectElements method is called
+     * @then The correct query should be executed and the detailed elements should be returned
+     */
     describe('getDetailedProjectElements', () => {
         it('should return detailed project elements', async () => {
             // Given: Mocked detailed data for project elements
@@ -100,28 +134,32 @@ describe('ProjectRepository', () => {
 
             // Then: The correct query should be executed and the detailed elements should be returned
             const expectedQuery = `
-            SELECT pe.element_id, pe.quantity, e.name, e.color, e.category, e.price, e.installation_cost, e.installation_time 
-            FROM project_elements pe
-            JOIN elements e ON pe.element_id = e.id
-            WHERE pe.project_id = $1
-        `.replace(/\s+/g, ' ').trim();
+                SELECT pe.element_id, pe.quantity, e.name, e.color, e.category, e.price, e.installation_cost, e.installation_time 
+                FROM project_elements pe
+                JOIN elements e ON pe.element_id = e.id
+                WHERE pe.project_id = $1
+            `.replace(/\s+/g, ' ').trim();
 
-            // Usuwamy dodatkowe spacje, nowe linie zarówno z rzeczywistego, jak i oczekiwanego zapytania
+            // Clean the query for comparison
             const cleanQuery = (str) => str.replace(/\s+/g, ' ').trim();
 
-            // Porównanie rzeczywistego zapytania po oczyszczeniu
+            // Compare the cleaned actual query with the expected query
             expect(cleanQuery(query.mock.calls[0][0])).toBe(expectedQuery);
 
-            // Sprawdzenie parametrów zapytania
+            // Check query parameters
             expect(query.mock.calls[0][1]).toEqual([1]);
 
-            // Sprawdzenie wyniku
+            // Check the result
             expect(result).toEqual(mockDetailedElements);
         });
     });
 
-
-
+    /**
+     * @description Test suite for createProject method
+     * @given Valid project data
+     * @when The createProject method is called
+     * @then The correct insert query should be executed and the new project should be returned
+     */
     describe('createProject', () => {
         it('should create a new project and return it', async () => {
             // Given: Valid project data
@@ -141,6 +179,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for updateProjectStatusAndEndDate method
+     * @given Valid project ID, status, and end date
+     * @when The updateProjectStatusAndEndDate method is called
+     * @then The correct update query should be executed
+     */
     describe('updateProjectStatusAndEndDate', () => {
         it('should update the project status and end date', async () => {
             // Given: Valid project ID, status, and end date
@@ -157,6 +201,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for addElementToProject method
+     * @given A valid project ID, element ID, and quantity
+     * @when The addElementToProject method is called
+     * @then The correct insert or update query should be executed
+     */
     describe('addElementToProject', () => {
         it('should add or update an element in a project', async () => {
             // Given: A valid project ID, element ID, and quantity
@@ -173,6 +223,12 @@ describe('ProjectRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for removeElementQuantityFromProject method
+     * @given A valid project ID and element ID with enough quantity
+     * @when The removeElementQuantityFromProject method is called
+     * @then The correct update query should be executed
+     */
     describe('removeElementQuantityFromProject', () => {
         it('should remove a specific quantity of an element or delete it if quantity is zero', async () => {
             // Given: A valid project ID and element ID with enough quantity
@@ -187,6 +243,12 @@ describe('ProjectRepository', () => {
             expect(query).toHaveBeenCalledWith('UPDATE project_elements SET quantity = quantity - $1 WHERE project_id = $2 AND element_id = $3', [3, 1, 2]);
         });
 
+        /**
+         * @description Test suite for removeElementQuantityFromProject method when quantity is low
+         * @given A valid project ID and element ID with low quantity
+         * @when The removeElementQuantityFromProject method is called
+         * @then The correct delete query should be executed
+         */
         it('should delete the element if the remaining quantity is zero or less', async () => {
             // Given: A valid project ID and element ID with low quantity
             query.mockResolvedValueOnce({ rows: [{ quantity: 2 }] }); // Initial quantity

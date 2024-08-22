@@ -1,7 +1,7 @@
 import elementRepository from '../../api/v1/repositories/elementRepository.js';
 import { query } from '../../config/configDB.js';
 
-// Mockowanie funkcji query
+// Mock the query function
 jest.mock('../../config/configDB.js');
 
 describe('ElementRepository', () => {
@@ -9,6 +9,12 @@ describe('ElementRepository', () => {
         jest.clearAllMocks();
     });
 
+    /**
+     * @description Test suite for getAllElements method
+     * @given No filters are applied
+     * @when The getAllElements method is called without filters
+     * @then The correct query should be executed and all elements should be returned
+     */
     describe('getAllElements', () => {
         it('should return all elements when no filters are applied', async () => {
             // Given: No filters are applied
@@ -23,6 +29,12 @@ describe('ElementRepository', () => {
             expect(result).toEqual(mockElements);
         });
 
+        /**
+         * @description Test suite for getAllElements method with filters
+         * @given Filters for category and color are provided
+         * @when The getAllElements method is called with filters
+         * @then The correct query with filters should be executed
+         */
         it('should apply category and color filters when provided', async () => {
             // Given: Filters for category and color are provided
             const mockElements = [{ id: 1, name: 'Filtered Element' }];
@@ -41,6 +53,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for getElementById method
+     * @given An element with a specific ID exists
+     * @when The getElementById method is called with an ID
+     * @then The correct query should be executed and the element should be returned
+     */
     describe('getElementById', () => {
         it('should return a single element by ID', async () => {
             // Given: An element with a specific ID exists
@@ -56,6 +74,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for getElementsByIds method
+     * @given Elements with specific IDs exist
+     * @when The getElementsByIds method is called with an array of IDs
+     * @then The correct query should be executed and the elements should be returned
+     */
     describe('getElementsByIds', () => {
         it('should return multiple elements by their IDs', async () => {
             // Given: Elements with specific IDs exist
@@ -71,6 +95,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for updateStock method
+     * @given A valid element ID and quantity
+     * @when The updateStock method is called
+     * @then The correct update query should be executed
+     */
     describe('updateStock', () => {
         it('should update the stock of an element', async () => {
             // Given: A valid element ID and quantity
@@ -87,6 +117,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for createElement method
+     * @given Valid element data
+     * @when The createElement method is called with element data
+     * @then The correct insert query should be executed and the new element should be returned
+     */
     describe('createElement', () => {
         it('should create a new element and return it', async () => {
             // Given: Valid element data
@@ -120,6 +156,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for updateElement method
+     * @given Valid element ID and updated data
+     * @when The updateElement method is called
+     * @then The correct update query should be executed and the updated element should be returned
+     */
     describe('updateElement', () => {
         it('should update an existing element and return it', async () => {
             // Given: Valid element ID and updated data
@@ -153,6 +195,12 @@ describe('ElementRepository', () => {
         });
     });
 
+    /**
+     * @description Test suite for deleteElement method
+     * @given A valid element ID
+     * @when The deleteElement method is called
+     * @then The correct delete query should be executed
+     */
     describe('deleteElement', () => {
         it('should delete an element by ID', async () => {
             // Given: A valid element ID
