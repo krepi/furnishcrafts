@@ -1,7 +1,6 @@
 
 # FurnishCrafts - Testing and CI/CD
 
-## Table of Contents
 
 ## Table of Contents
 
