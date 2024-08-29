@@ -37,16 +37,19 @@ jobs:
 
       # Install dependencies from package.json
       - name: Install dependencies
+        working-directory: ./backend  # Change to the backend director
         run: npm install
         # `npm install` installs all the dependencies needed to run the project and its tests.
 
       # Run the tests using npm
       - name: Run tests
+        working-directory: ./backend  # Change to the backend director
         run: npm test
         # The `npm test` command runs all the tests defined in  project using Jest.
 
       # Run ESLint to check code quality and style
       - name: Run ESLint
+        working-directory: ./backend  # Change to the backend director
         run: npm run lint
         # The `npm run lint` command runs ESLint, which checks the code for formatting and quality issues.
 
