@@ -11,7 +11,8 @@
     "UT-services": "jest --testPathPattern=src/tests/services/",
     "UT-element-service": "jest --testPathPattern=src/tests/services/elementService.test.js",
     "UT-project-service": "jest --testPathPattern=src/tests/services/projectService.test.js",
-    "UT-project-calculation-service": "jest --testPathPattern=src/tests/services/projectCalculationService.test.js"
+    "UT-project-calculation-service": "jest --testPathPattern=src/tests/services/projectCalculationService.test.js",
+    "lint": "eslint '**/*.js'"
   },
   "repository": {
     "type": "git",
