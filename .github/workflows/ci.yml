@@ -25,12 +25,12 @@ jobs:
 
       # Check out the repository (get the code from the repo)
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         # The checkout action pulls the code from the repository so it can be built and tested.
 
       # Set up Node.js (we're using Node.js version 22 for this project)
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '22'
         # We're using Node.js version 22, which is compatible with  project.
