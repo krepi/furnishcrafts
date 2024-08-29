@@ -1,5 +1,7 @@
 
-# FurnishCrafts - Backend
+# FurnishCrafts - Testing and CI/CD
+
+## Table of Contents
 
 ## Table of Contents
 
@@ -14,6 +16,9 @@
             - [Jest Configuration](#jest-configuration)
     - [Running Tests](#running-tests)
         - [Test Coverage](#test-coverage)
+- [CI/CD Pipeline](#cicd-pipeline)
+    - [GitHub Actions Setup](#github-actions-setup)
+    - [Continuous Integration Workflow](#continuous-integration-workflow)
 
 
 ---
@@ -120,6 +125,37 @@ npm test -- --coverage
 Using the `--coverage` flag will generate a detailed report showing which parts of the codebase are covered by tests. The coverage report is shown in the terminal and can be opened in a browser for detailed analysis.
 
 ---
+## CI/CD Pipeline
+
+### GitHub Actions Setup
+
+We have integrated a Continuous Integration/Continuous Deployment (CI/CD) pipeline using GitHub Actions. This pipeline automatically runs tests, lints the code, and checks for any potential issues whenever new code is pushed to the repository or a pull request is opened.
+
+### Continuous Integration Workflow
+
+The CI/CD process is defined in the `.github/workflows/ci.yml` file. This file includes steps to:
+
+- **Install Dependencies**: Ensures that all necessary packages and dependencies are installed in the environment.
+- **Run ESLint**: Checks the codebase for any linting errors according to the ESLint configuration.
+- **Run Tests**: Executes all unit tests to verify that the code changes do not break any functionality.
+
+Here’s an overview of the key components:
+
+- **Node.js Version**: The CI pipeline uses Node.js version 22, aligning with the development environment.
+- **ESLint**: Ensures code quality and consistency across the codebase.
+- **Jest**: Runs all unit tests and generates a coverage report.
+
+#### Environment Variables and Secrets
+
+Sensitive data, such as database credentials, is stored securely in GitHub Secrets. These secrets are referenced in the workflow to ensure a secure CI/CD process.
+
+To add or manage secrets:
+- Navigate to **Settings** → **Secrets and variables** → **Actions** on GitHub.
+- Add your secrets under **Repository secrets** to ensure they are available during the CI/CD process.
+
+### Running the CI/CD Pipeline
+
+To trigger the CI/CD pipeline manually, you can push changes to the repository or create a pull request. The pipeline will automatically execute the defined workflow and provide feedback on any issues directly in the pull request.
 
 
 
