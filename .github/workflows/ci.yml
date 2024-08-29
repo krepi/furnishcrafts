@@ -1,0 +1,60 @@
+# Name of the workflow, visible in the GitHub Actions UI
+name: CI Pipeline
+
+# Specifies when the workflow should be triggered
+on:
+  # Triggers the workflow on pushes to the `main` and `CI/CD` branches
+  push:
+    branches:
+      - main
+      - CI/CD
+  # Triggers the workflow on pull requests targeting the `main` and `CI/CD` branches
+  pull_request:
+    branches:
+      - main
+      - CI/CD
+
+# Defines the jobs to run in the workflow
+jobs:
+  build:
+    # The job will run on the latest Ubuntu virtual machine
+    runs-on: ubuntu-latest
+
+    steps:
+      # Steps to be executed as part of this job
+
+      # Check out the repository (get the code from the repo)
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        # The checkout action pulls the code from the repository so it can be built and tested.
+
+      # Set up Node.js (we're using Node.js version 22 for this project)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+        # We're using Node.js version 22, which is compatible with  project.
+
+      # Install dependencies from package.json
+      - name: Install dependencies
+        run: npm install
+        # `npm install` installs all the dependencies needed to run the project and its tests.
+
+      # Run the tests using npm
+      - name: Run tests
+        run: npm test
+        # The `npm test` command runs all the tests defined in  project using Jest.
+
+      # Run ESLint to check code quality and style
+      - name: Run ESLint
+        run: npm run lint
+        # The `npm run lint` command runs ESLint, which checks the code for formatting and quality issues.
+
+      # Set environment variables for database connection
+      - name: Set environment variables
+        run: |
+          echo "DB_MAIN_USER=${{ secrets.DB_MAIN_USER }}" >> $GITHUB_ENV
+          echo "DB_MAIN_PASSWORD=${{ secrets.DB_MAIN_PASSWORD }}" >> $GITHUB_ENV
+          echo "DB_MAIN_NAME=${{ secrets.DB_MAIN_NAME }}" >> $GITHUB_ENV
+        # These lines set environment variables based on secrets defined in the GitHub repository.
+        # These variables are essential for setting up the database connection in your project.
