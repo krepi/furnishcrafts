@@ -1,6 +1,6 @@
 import express from 'express';
 import AuthController from '../controllers/authController.js';
-import {validateEmptyQueryParams} from "../middleware/paramsValidatorMiddleware.js";
+
 
 const authController = new AuthController();
 const router = express.Router();
