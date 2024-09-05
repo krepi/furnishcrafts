@@ -19,7 +19,6 @@
     - [GitHub Actions Setup](#github-actions-setup)
     - [Continuous Integration Workflow](#continuous-integration-workflow)
 
-
 ---
 
 ## Introduction

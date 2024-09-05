@@ -232,7 +232,8 @@ docker-compose.yml
 
 To set up and run the application, follow these steps:
 
-**WARNING! If you want to use demonstration (mock) data and load them into the database, simply use the credentials that are already defined in .env.example in the main project directory and in the backend directory. Just remember to fill in your SECRET_KEY!**
+**WARNING! 
+ If you want to use demonstration (mock) data and load them into the database, simply use the credentials that are already defined in .env.example in the main project directory and in the backend directory. Just remember to fill in your SECRET_KEY!**
 1. **Clone the Repository:**
 
    Clone the project repository from GitHub to your local machine.
