@@ -1,14 +1,4 @@
-#version: '3'  # Specifies the version of Docker Compose file format
-
 services:
-#  frontend:
-#    build:
-#      context: ./frontend  # Builds the frontend service from the specified directory
-#    ports:
-#      - "3000:3000"  # Maps port 3000 of the container to port 3000 on the host
-#    depends_on:
-#      - backend  # Ensures the backend service starts before the frontend service
-
   backend:
     build:
       context: ./backend  # Builds the backend service from the specified directory
